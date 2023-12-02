@@ -1,0 +1,343 @@
+﻿@import "fn.styl"
+
+style()
+
+.mobile-wrap
+	position relative
+	min-height 100vh
+
+main
+	width 100%
+	padding 20px 5%	
+
+.appItem
+	width 100%
+	display -webkit-flex
+	display -moz-flex
+	display -ms-flex
+	display -o-flex
+	display flex
+	justify-content space-between
+	flex-wrap wrap
+	padding-bottom 40px
+	.left
+		width 230px
+		height 230px
+		border-radius 10px
+		overflow hidden
+		img
+			public-img()
+	.right
+		width calc(100% - 260px)
+		strong
+			color #111
+			font-size 40px
+			line-height 1.4
+			display block
+			span
+				color #8e8e93
+				font-size 24px
+				border-radius 8px
+				padding 2px 10px
+				border 1px solid #8e8e93
+				vertical-align middle
+				margin-left 10px
+		p
+			font-size 28px
+			line-height 1.4
+			color #8e8e93
+		.installBox
+			padding-top 40px
+			width 100%
+			display -webkit-flex
+			display -moz-flex
+			display -ms-flex
+			display -o-flex
+			display flex
+			justify-content space-between
+			a
+				display inline-block
+				&:active
+					opacity .85
+			.down
+				min-width 210px
+				background-color #017afe
+				border-radius 30px
+				text-align center
+				color #fff
+				font-size 28px
+				padding 0 15px
+				heightL(62px)
+			.doubt
+				width 62px
+				heightL(62px)
+				border-radius 50%
+				background-color #017afe
+				color #fff
+				font-size 28px
+				font-weight bold
+				text-align center
+	.appTip
+		width 100%
+		padding-top 40px
+		display -webkit-flex
+		display -moz-flex
+		display -ms-flex
+		display -o-flex
+		display flex
+		justify-content space-between
+		.score
+			line-height 1.2
+			.star
+				color #8e8e93
+				font-weight bold
+				font-size 34px
+				var
+					width 160px
+					height 32px
+					background url("../img/star.svg") 0 0
+					background-size .32rem .72rem
+					display inline-block
+			p
+				color #d8d8d8
+				font-size 24px
+				line-height 1.6
+		.centerBox
+			color #8e8e93
+			font-size 30px
+			text-align center
+			font-weight bold
+			i
+				position relative
+				top -10px
+		.age
+			color #8e8e93
+			line-height 1.2
+			text-align right
+			b
+				font-size 34px
+				display block
+			p
+				color #d8d8d8
+				font-size 24px
+				
+.comment
+	width 100%
+	padding 34px 0
+	border-top 1px solid #e5e5e5
+	border-bottom 1px solid #e5e5e5
+	display -webkit-flex
+	display -moz-flex
+	display -ms-flex
+	display -o-flex
+	display flex
+	justify-content space-between
+	align-items flex-start
+	flex-wrap wrap
+	.left
+		text-align center
+		padding-left 20px
+		b
+			font-size 120px
+			color #4c4c50
+			line-height 1.1
+		p
+			font-size 28px
+			color #8e8e93
+			font-weight bold
+	.right
+		flex-grow .9
+		p
+			font-size 28px
+			color #8e8e93
+			line-height 1.4
+			text-align right
+		.star_row
+			width 100%
+			display -webkit-flex
+			display -moz-flex
+			display -ms-flex
+			display -o-flex
+			display flex
+			justify-content space-between
+			align-items center
+			span
+				width 120px
+				height 24px
+				display inline-block
+				text-align right
+				i
+					height 16px
+					display inline-block
+					background url("../img/star.svg") 0 0
+					background-size 18px 34px
+				&.s1
+					i
+						width 90px
+				&.s2
+					i
+						width 72px
+				&.s3
+					i
+						width 54px
+				&.s4
+					i
+						width 36px
+				&.s5
+					i
+						width 18px
+			.lineBox
+				width calc(100% - 160px)
+				height 5px
+				border-radius 30px
+				background-color #e5e5e5
+				overflow hidden
+				var
+					height 100%
+					border-radius 0 30px 30px 0
+					background-color #8e8e93
+					float left
+					&.v1
+						width 90%
+					&.v2
+						width 10%
+					&.v3
+						width 4%
+					&.v4
+						width 2%
+					&.v5
+						width 1%
+						
+.publicTitle
+	width 100%
+	font-size 40px
+	line-height 1.2
+	letter-spacing 2px
+	margin-bottom 30px
+	display block	
+
+.newFunction
+	width 100%
+	padding 34px 0
+	border-bottom 1px solid #e5e5e5
+	line-height 1.4
+	p
+		font-size 30px
+		color #333
+
+.appInfo
+	width 100%
+	padding 34px 0
+	.box
+		ul
+			li
+				width 100%
+				line-height 1.4
+				padding 15px 0
+				float none
+				border-bottom 1px solid #e5e5e5
+				display -webkit-flex
+				display -moz-flex
+				display -ms-flex
+				display -o-flex
+				display flex
+				justify-content space-between
+				&:last-child
+					border-bottom none
+				span	
+					flex-grow .1
+					font-size 24px
+					color #8e8e93	
+					text-hide()
+				p
+					width 80%
+					color #333
+					font-size 24px
+					text-align right
+					display inline-block
+					db-text(2)
+					
+.footer
+	width 100%
+	padding 15px 3%
+	background-color #eee
+	color #a9a9a9
+	line-height 1.6
+	p
+		font-size 20px
+		&.p2
+			text-indent 40px
+
+.pup
+	position fixed
+	z-index 10
+	top 0
+	left 0
+	width 100%
+	height 100%
+	background rgba(#000,.7)
+	display none
+	
+.guide
+	position absolute
+	top 50%
+	left 50%
+	transform translate(-50%,-50%)
+	width 80%
+	border-radius 10px
+	overflow hidden
+	background-color #fff
+	padding-bottom 20px
+	.colse
+		position absolute
+		z-index 2
+		top 0
+		right 0
+		width 70px
+		height 70px
+		background url("../img/31cb4_4_200_200.png") no-repeat
+		background-size 100%
+	.pics
+		width 100%
+		height 550px
+	.pic
+		width 100%
+		height 420px
+		overflow hidden
+		img
+			public-img()
+	.text
+		padding 15px
+		color #1e93ff
+		font-size 26px
+		line-height 1.6
+		text-align center
+	.swiper-container
+		height 100%
+	.swiper-pagination
+		bottom 0 !important
+		span
+			background-color #def1ff
+			opacity 1
+			&.swiper-pagination-bullet-active
+				background-color #70c2fe
+				opacity 1
+	.smallTip
+		text-align center
+		line-height 1.4
+		padding-top 30px
+		a
+			color #1daafc
+			font-size 24px
+			
+.pupPic
+	position fixed
+	z-index 11
+	top 0
+	left 0
+	width 100%
+	height 100%
+	display none
+	img
+		width 100%
+		height 100%
