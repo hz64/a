@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Ze生存服务器</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body background="http://xghgg.3vcn.work/bj.png"></body>
+</head>
+<body>
+
+    <div class="showTime">获取失败！</div>
+    <script>
+      var t = null;
+      t = setTimeout(time, 1000); //開始运行
+      function time() {
+        clearTimeout(t); //清除定时器
+        dt = new Date();
+        var y = dt.getFullYear();
+        var mt = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var h = dt.getHours(); //获取时
+        var m = dt.getMinutes(); //获取分
+        var s = dt.getSeconds(); //获取秒
+        document.querySelector(".showTime").innerHTML =
+          "日期: " +
+          y +
+          " " +
+          mt +
+          " " +
+          day +
+          " 时间: " +
+          h +
+          "时 " +
+          m +
+          "分 " +
+          s +
+          "秒";
+        t = setTimeout(time, 1000); //设定定时器，循环运行
+      }
+    </script>
+    <h1 align="center">Ze生存服务器</h1>
+    <h3 align="center">服务器线路</h3>
+    
+<dt style="font-size:14px; text-align:center">
+    <a href="minecraft://?addExternalServer=Ze生存服务器线路1|mc.hz66.link:12627" class="btn btn-white btn-small"><i class="fas fa-plus-circle"></i>服务器线路1 [稳定]</a>
+</dt>
+
+<dt style="font-size:14px; text-align:center">
+  <a href="minecraft://?addExternalServer=Ze生存服务器线路2|play.simpfun.cn:12627" class="btn btn-white btn-small"><i class="fas fa-plus-circle"></i>服务器线路2 [速度]</a>
+</dt>
+
+    <dt style="font-size:14px; text-align:center">
+    <a href="minecraft://?addExternalServer=Ze生存服务器线路3|play.simpfun.vip:12627" class="btn btn-white btn-small"><i class="fas fa-plus-circle"></i>服务器线路3 [稳定]</a>
+</dt>
+
+    <dt style="font-size:14px; text-align:center">
+        <h4></h4>
+    <a href="https://www.123pan.com/s/yK2uVv-kgVoA.html" class="btn btn-white btn-small"><i class="fas fa-plus-circle"></i>我的世界客户端</a>
+</dt>
