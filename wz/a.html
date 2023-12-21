@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>每次刷新获取一行文字</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $.get('./1.txt', function(data) {
+        var lines = data.split('\n');
+        var randomIndex = Math.floor(Math.random() * lines.length);
+        var randomLine = lines[randomIndex];
+        $('#text').text(randomLine);
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>每次刷新获取一行文字</h1>
+  <p id="text"></p>
+</body>
+</html>
