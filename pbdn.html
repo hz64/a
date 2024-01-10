@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>平板电脑</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var countElement = document.getElementById("count");
+      var currentCount = parseInt(localStorage.getItem("count")) || 0;
+      countElement.innerHTML = currentCount;
+      
+      function increaseCount() {
+        if (currentCount < 1200) {
+          currentCount++;
+          countElement.innerHTML = currentCount;
+          localStorage.setItem("count", currentCount);
+        } else {
+          countElement.innerHTML = "搜集成功";
+        }
+      }
+      
+      var button = document.getElementById("button");
+      button.addEventListener("click", increaseCount);
+    });
+  </script>
+</head>
+<body>
+  <p><b>平板电脑</b><font color="#FFDE04">【传说】</font></p>
+
+  <p>开机有迷惑效果，<br>
+     可以迷惑使用者7个小时</p>
+     
+  <p>碎片收集：<b>1200/<span id="count">0</span></b></p>
+  <button id="button">碎片+1</button>
+</body>
+</html>
