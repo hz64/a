@@ -8,21 +8,126 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var countElement = document.getElementById("count");
-      var currentCount = parseInt(localStorage.getItem("count")) || 0;
+      var currentCount = parseInt(getCookie("count")) || 0;
       countElement.innerHTML = currentCount;
       
       function increaseCount() {
         if (currentCount < 1200) {
           currentCount++;
           countElement.innerHTML = currentCount;
-          localStorage.setItem("count", currentCount);
+          setCookie("count", currentCount, 120); // 120天
         } else {
           countElement.innerHTML = "搜集成功";
         }
       }
       
-      var button = document.getElementById("button");
-      button.addEventListener("click", increaseCount);
+      function decreaseCount() {
+        if (currentCount > 0) {
+          currentCount--;
+          countElement.innerHTML = currentCount;
+          setCookie("count", currentCount, 120); // 120天
+        }
+      }
+      
+      var increaseButton = document.getElementById("increaseButton");
+      increaseButton.addEventListener("click", increaseCount);
+      
+      var decreaseButton = document.getElementById("decreaseButton");
+      decreaseButton.addEventListener("click", decreaseCount);
+      
+      function setCookie(name, value, expirationDays) {
+        var date = new Date();
+        date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+      
+      function getCookie(name) {
+        var cookieName = name + "=";
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i];
+          while (cookie.charAt(0) == " ") {
+            cookie = cookie.substring(1);
+          }
+          if (cookie.indexOf(cookieName) == 0) {
+            return cookie.substring(cookieName.length, cookie.length);
+          }<!DOCTYPE html>
+<html>
+<head>
+  <title>平板电脑</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var countElement = document.getElementById("count");
+      var currentCount = parseInt(getCookie("count")) || 0;
+      countElement.innerHTML = currentCount;
+      
+      function increaseCount() {
+        if (currentCount < 1200) {
+          currentCount++;
+          countElement.innerHTML = currentCount;
+          setCookie("count", currentCount, 120); // 120天
+        } else {
+          countElement.innerHTML = "搜集成功";
+        }
+      }
+      
+      function decreaseCount() {
+        if (currentCount > 0) {
+          currentCount--;
+          countElement.innerHTML = currentCount;
+          setCookie("count", currentCount, 120); // 120天
+        }
+      }
+      
+      var increaseButton = document.getElementById("increaseButton");
+      increaseButton.addEventListener("click", increaseCount);
+      
+      var decreaseButton = document.getElementById("decreaseButton");
+      decreaseButton.addEventListener("click", decreaseCount);
+      
+      function setCookie(name, value, expirationDays) {
+        var date = new Date();
+        date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+      
+      function getCookie(name) {
+        var cookieName = name + "=";
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i];
+          while (cookie.charAt(0) == " ") {
+            cookie = cookie.substring(1);
+          }
+          if (cookie.indexOf(cookieName) == 0) {
+            return cookie.substring(cookieName.length, cookie.length);
+          }
+        }
+        return "";
+      }
+    });
+  </script>
+</head>
+<body>
+  <p><b>平板电脑</b><font color="#FFDE04">【传说】</font></p>
+
+  <p>开机有迷惑效果，<br>
+     可以迷惑使用者7个小时</p>
+     
+  <p>碎片收集：<b>1200/<span id="count">0</span></b></p>
+  <button id="increaseButton">碎片+1</button>
+  <button id="decreaseButton">碎片-1</button>
+</body>
+</html>
+
+        }
+        return "";
+      }
     });
   </script>
 </head>
@@ -34,5 +139,6 @@
      
   <p>碎片收集：<b>1200/<span id="count">0</span></b></p>
   <button id="button">碎片+1</button>
+  <button id="decreaseButton">碎片-1</button>
 </body>
 </html>
