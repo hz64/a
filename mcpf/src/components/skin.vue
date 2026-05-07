@@ -1,5 +1,5 @@
 <script>
-import { VueElement, ref } from "vue";
+import { ref } from "vue";
 import { SkinViewer } from "skinview3d";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
@@ -106,17 +106,17 @@ export default {
                     //console.log(img.width);
                     //console.log(img.height);
                     if (
-                        img.width != img.height && (img.width != 128 ||img.width != 64 || img.width != 32)
+                        img.width != img.height && img.width != 128 && img.width != 64 && img.width != 32
                     ) {
                         alert("图片尺寸不正确，请上传128 64 32的图片");
                         return;
                     }
                     //这里ulr
-                    this.ulr = e.target.result;
-                    //console.log(this.ulr);
+                    that.ulr = e.target.result;
+                    //console.log(that.ulr);
 
-                    skinViewer.loadSkin(this.ulr);
-                    //console.log(skinViewer.loadSkin(this.ulr));
+                    skinViewer.loadSkin(that.ulr);
+                    //console.log(skinViewer.loadSkin(that.ulr));
                     skinViewer.autoRotate = true;
                     setTimeout(() => {
                         skinViewer.autoRotate = false;
@@ -126,12 +126,12 @@ export default {
 
                     that.skinlistindex = that.skinlist.push({
                         name: "皮肤" + (skinlist.length + 1),
-                        src: this.ulr,
+                        src: that.ulr,
                         slim: skinViewer.playerObject.skin.modelType,
                     }) - 1;
 
                     //调用skinmodelslim()方法
-                    that.skinmodelslim(this.ulr);
+                    that.skinmodelslim(that.ulr);
                 };
             };
         },
@@ -290,7 +290,7 @@ export default {
 </script>
 <template>
     <div class="loaders" v-if="loaders">
-        <img src="../assets/ing.png">
+        <img src="/src/assets/ing.png">
         <p>正在工作</p>
     </div>
     <div class="up">
@@ -306,14 +306,14 @@ export default {
         <div class="skinlist">
             <button class="previous" @click="skinlistbrowse(-1)">
                 <!-- <svg viewBox="0 0 512 512" id="pixel-arrow-left-news"><path d="M96 288v64h64v64h64v64h64V288h192v-64H288V32h-64v64h-64v64H96v64H32v64h64z"></path></svg> -->
-                <img class="arrow" src="../assets/arrow-left.png" alt="" />
+                <img class="arrow" src="/src/assets/arrow-left.png" alt="" />
             </button>
             <button class="del" @click="skinlistdelete()">
-                <img class="arrow del" src="../assets/arrow-del.png" /></button>
+                <img class="arrow del" src="/src/assets/arrow-del.png" /></button>
             <!-- <div class="skinlistimg"></div> -->
             <button class="unext" @click="skinlistbrowse(+1)">
                 <!-- <svg viewBox="0 0 512 512" id="pixel-arrow-right-news"><path d="M416 224v-64h-64V96h-64V32h-64v192H32v64h192v192h64v-64h64v-64h64v-64h64v-64h-64z"></path></svg> -->
-                <img class="arrow" src="../assets/arrow-right.png" alt="" />
+                <img class="arrow" src="/src/assets/arrow-right.png" alt="" />
             </button>
         </div>
         <div class="skininfo">
@@ -324,12 +324,12 @@ export default {
                 <div class="underline"></div>
             </div>
             <div class="skinmode input-container" @click="skinmodelslim()">
-                <img src="../assets/model-default.png" alt="" />
+                <img src="/src/assets/model-default.png" alt="" />
                 <div class="skinmodel" :class="skinmodel ? 'slim' : 'default'">
                     <button class="default">默认</button>
                     <button class="slim">瘦身</button>
                 </div>
-                <img src="../assets/model-slim.png" alt="" />
+                <img src="/src/assets/model-slim.png" alt="" />
             </div>
             <div class="skinname input-container">
                 <input type="text" required="" v-model="skinpackname" />

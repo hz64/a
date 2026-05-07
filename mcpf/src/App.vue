@@ -6,7 +6,7 @@ import sk from './components/skin.vue'
 <template>
   <div id="top">
 
-    <img src="../public/slemons.png" class="logo">
+    <img src="/public/slemons.png" class="logo">
     <h2>皮肤包生成器</h2>
   </div>
   <div id="box1"></div>
@@ -54,7 +54,7 @@ h2 {
 }
 
 body {
-  background-image: url('../src/assets/bg.png');
+  background-image: url('./assets/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

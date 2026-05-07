@@ -43,7 +43,7 @@
                 <div class="relative">
                     <!-- 下载链接选择器，包含多个预设链接 -->
                     <select id="download-link-select" v-model="set.input" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 sm:text-sm bg-white mb-2">
-                        <option value="https://cachefly.cachefly.net/100mb.test" selected>Default [推荐]</option>
+                        <option value="https://cachefly.cachefly.net/100mb.test" selected>Default [推荐] {{getLatencyDisplay('https://cachefly.cachefly.net/100mb.test')}}</option>
                         <option value="">↓↓ 百度 ↓↓</option>
                         <option value="https://wppkg.baidupcs.com/issue/netdisk/apk/BaiduNetdisk_10.1.02.apk">百度网盘</option>
                         <option value="https://imeres.baidu.com/imeres/ime-res/guanwang/img/UOS-fcitx-baidupinyin-64.zip">百度输入法</option>
@@ -80,12 +80,77 @@
                         <option value="https://kodo-toolbox.qiniu.com/kodo-browser-Linux-x64-v1.0.17.zip">七牛云</option>
                         <option value="https://picture.xianniu.com/pc/download/3.8.0.4/xianniusetup.3.8.0.4.exe">鲜牛加速器(华为云CDN)</option>
                         <option value="https://gh.con.sh/https://github.com/AaronFeng753/Waifu2x-Extension-GUI/releases/download/v2.21.12/Waifu2x-Extension-GUI-v2.21.12-Portable.7z">GitHub文件加速(cloudflare CDN)</option>
+                        <option value="">↓↓ DataPacket 亚洲节点 {{latencyTested?'(已测试)':''}} ↓↓</option>
+                        <option value="https://84.17.57.129/100MB">HK-100MB {{getLatencyDisplay('https://84.17.57.129/100MB')}}</option>
+                        <option value="https://84.17.57.129/1GB">HK-1GB {{getLatencyDisplay('https://84.17.57.129/1GB')}}</option>
+                        <option value="https://84.17.57.129/10GB">HK-10GB {{getLatencyDisplay('https://84.17.57.129/10GB')}}</option>
+                        <option value="https://89.187.162.1/100MB">SG-100MB {{getLatencyDisplay('https://89.187.162.1/100MB')}}</option>
+                        <option value="https://89.187.162.1/1GB">SG-1GB {{getLatencyDisplay('https://89.187.162.1/1GB')}}</option>
+                        <option value="https://89.187.162.1/10GB">SG-10GB {{getLatencyDisplay('https://89.187.162.1/10GB')}}</option>
+                        <option value="https://89.187.160.1/100MB">Tokyo-100MB {{getLatencyDisplay('https://89.187.160.1/100MB')}}</option>
+                        <option value="https://89.187.160.1/1GB">Tokyo-1GB {{getLatencyDisplay('https://89.187.160.1/1GB')}}</option>
+                        <option value="https://89.187.160.1/10GB">Tokyo-10GB {{getLatencyDisplay('https://89.187.160.1/10GB')}}</option>
+                        <option value="https://89.222.116.1/100MB">Seoul-100MB {{getLatencyDisplay('https://89.222.116.1/100MB')}}</option>
+                        <option value="https://89.222.116.1/1GB">Seoul-1GB {{getLatencyDisplay('https://89.222.116.1/1GB')}}</option>
+                        <option value="https://89.222.116.1/10GB">Seoul-10GB {{getLatencyDisplay('https://89.222.116.1/10GB')}}</option>
+                        <option value="https://89.222.110.1/100MB">KL-100MB {{getLatencyDisplay('https://89.222.110.1/100MB')}}</option>
+                        <option value="https://89.222.110.1/1GB">KL-1GB {{getLatencyDisplay('https://89.222.110.1/1GB')}}</option>
+                        <option value="https://89.222.110.1/10GB">KL-10GB {{getLatencyDisplay('https://89.222.110.1/10GB')}}</option>
+                        <option value="https://143.244.63.144/100MB">Sydney-100MB {{getLatencyDisplay('https://143.244.63.144/100MB')}}</option>
+                        <option value="https://143.244.63.144/1GB">Sydney-1GB {{getLatencyDisplay('https://143.244.63.144/1GB')}}</option>
+                        <option value="https://143.244.63.144/10GB">Sydney-10GB {{getLatencyDisplay('https://143.244.63.144/10GB')}}</option>
+                        <option value="https://79.127.130.1/100MB">Melbourne-100MB {{getLatencyDisplay('https://79.127.130.1/100MB')}}</option>
+                        <option value="https://79.127.130.1/1GB">Melbourne-1GB {{getLatencyDisplay('https://79.127.130.1/1GB')}}</option>
+                        <option value="https://79.127.130.1/10GB">Melbourne-10GB {{getLatencyDisplay('https://79.127.130.1/10GB')}}</option>
+                        <option value="https://79.127.173.1/100MB">Auckland-100MB {{getLatencyDisplay('https://79.127.173.1/100MB')}}</option>
+                        <option value="https://79.127.173.1/1GB">Auckland-1GB {{getLatencyDisplay('https://79.127.173.1/1GB')}}</option>
+                        <option value="https://79.127.173.1/10GB">Auckland-10GB {{getLatencyDisplay('https://79.127.173.1/10GB')}}</option>
+                        <option value="">↓↓ Hetzner 节点 ↓↓</option>
+                        <option value="https://sin-speed.hetzner.com/100MB.bin">SIN-100MB {{getLatencyDisplay('https://sin-speed.hetzner.com/100MB.bin')}}</option>
+                        <option value="https://sin-speed.hetzner.com/1GB.bin">SIN-1GB {{getLatencyDisplay('https://sin-speed.hetzner.com/1GB.bin')}}</option>
+                        <option value="https://sin-speed.hetzner.com/10GB.bin">SIN-10GB {{getLatencyDisplay('https://sin-speed.hetzner.com/10GB.bin')}}</option>
+                        <option value="https://ash-speed.hetzner.com/100MB.bin">ASH-100MB {{getLatencyDisplay('https://ash-speed.hetzner.com/100MB.bin')}}</option>
+                        <option value="https://ash-speed.hetzner.com/1GB.bin">ASH-1GB {{getLatencyDisplay('https://ash-speed.hetzner.com/1GB.bin')}}</option>
+                        <option value="https://ash-speed.hetzner.com/10GB.bin">ASH-10GB {{getLatencyDisplay('https://ash-speed.hetzner.com/10GB.bin')}}</option>
+                        <option value="https://fsn1-speed.hetzner.com/100MB.bin">FSN1-100MB {{getLatencyDisplay('https://fsn1-speed.hetzner.com/100MB.bin')}}</option>
+                        <option value="https://fsn1-speed.hetzner.com/1GB.bin">FSN1-1GB {{getLatencyDisplay('https://fsn1-speed.hetzner.com/1GB.bin')}}</option>
+                        <option value="https://fsn1-speed.hetzner.com/10GB.bin">FSN1-10GB {{getLatencyDisplay('https://fsn1-speed.hetzner.com/10GB.bin')}}</option>
+                        <option value="https://hel1-speed.hetzner.com/100MB.bin">HEL1-100MB {{getLatencyDisplay('https://hel1-speed.hetzner.com/100MB.bin')}}</option>
+                        <option value="https://hel1-speed.hetzner.com/1GB.bin">HEL1-1GB {{getLatencyDisplay('https://hel1-speed.hetzner.com/1GB.bin')}}</option>
+                        <option value="https://hel1-speed.hetzner.com/10GB.bin">HEL1-10GB {{getLatencyDisplay('https://hel1-speed.hetzner.com/10GB.bin')}}</option>
+                        <option value="https://nbg1-speed.hetzner.com/100MB.bin">NBG1-100MB {{getLatencyDisplay('https://nbg1-speed.hetzner.com/100MB.bin')}}</option>
+                        <option value="https://nbg1-speed.hetzner.com/1GB.bin">NBG1-1GB {{getLatencyDisplay('https://nbg1-speed.hetzner.com/1GB.bin')}}</option>
+                        <option value="https://nbg1-speed.hetzner.com/10GB.bin">NBG1-10GB {{getLatencyDisplay('https://nbg1-speed.hetzner.com/10GB.bin')}}</option>
+                        <option value="https://hil-speed.hetzner.com/100MB.bin">HIL-100MB {{getLatencyDisplay('https://hil-speed.hetzner.com/100MB.bin')}}</option>
+                        <option value="https://hil-speed.hetzner.com/1GB.bin">HIL-1GB {{getLatencyDisplay('https://hil-speed.hetzner.com/1GB.bin')}}</option>
+                        <option value="https://hil-speed.hetzner.com/10GB.bin">HIL-10GB {{getLatencyDisplay('https://hil-speed.hetzner.com/10GB.bin')}}</option>
+                        <option value="">↓↓ ThinkBroadband ↓↓</option>
+                        <option value="http://ipv4.download.thinkbroadband.com/5GB.zip">TBB-5GB-IPv4-80</option>
+                        <option value="http://ipv4.download.thinkbroadband.com:81/5GB.zip">TBB-5GB-IPv4-81</option>
+                        <option value="http://ipv4.download.thinkbroadband.com:8080/5GB.zip">TBB-5GB-IPv4-8080</option>
+                        <option value="http://ipv6.download.thinkbroadband.com/5GB.zip">TBB-5GB-IPv6-80</option>
+                        <option value="http://ipv4.download.thinkbroadband.com/1GB.zip">TBB-1GB-IPv4-80</option>
+                        <option value="http://ipv4.download.thinkbroadband.com/100MB.zip">TBB-100MB-IPv4-80</option>
+                        <option value="http://ipv6.download.thinkbroadband.com/100MB.zip">TBB-100MB-IPv6-80</option>
+                        <option value="">↓↓ Tele2 大文件 ↓↓</option>
+                        <option value="http://speedtest.tele2.net/100MB.zip">Tele2-100MB</option>
+                        <option value="http://speedtest.tele2.net/1GB.zip">Tele2-1GB</option>
+                        <option value="http://speedtest.tele2.net/10GB.zip">Tele2-10GB</option>
+                        <option value="http://speedtest.tele2.net/50GB.zip">Tele2-50GB</option>
+                        <option value="http://speedtest.tele2.net/100GB.zip">Tele2-100GB</option>
+                        <option value="">↓↓ OVH + Clouvider ↓↓</option>
+                        <option value="https://proof.ovh.net/files/100Mb.dat">OVH-100Mb</option>
+                        <option value="https://proof.ovh.net/files/1Gb.dat">OVH-1Gb</option>
+                        <option value="https://proof.ovh.net/files/10Gb.dat">OVH-10Gb</option>
+                        <option value="https://la.speedtest.clouvider.net/1g.bin">LA-1G</option>
+                        <option value="https://nyc.speedtest.clouvider.net/1g.bin">NYC-1G</option>
+                        <option value="https://atl.speedtest.clouvider.net/1g.bin">ATL-1G</option>
                         <option value="">↓↓ 海外优选节点 ↓↓</option>
-                        <option value="https://cachefly.cachefly.net/100mb.test">Cachefly 100MB</option>
+                        <option value="https://cachefly.cachefly.net/100mb.test">Cachefly 100MB {{getLatencyDisplay('https://cachefly.cachefly.net/100mb.test')}}</option>
                         <option value="https://speed.cloudflare.com/__down?bytes=25000000">cloudflare</option>
-                        <option value="https://sgp-ping.vultr.com/vultr.com.1000MB.bin">Vultr 1G(新加坡)</option>
-                        <option value="https://nj-us-ping.vultr.com/vultr.com.1000MB.bin">Vultr 1G(纽约)</option>
-                        <option value="https://speedtest.tokyo2.linode.com/100MB-tokyo2.bin">Linode 100MB(日本省东京市)</option>
+                        <option value="https://sgp-ping.vultr.com/vultr.com.1000MB.bin">Vultr 1G(新加坡) {{getLatencyDisplay('https://sgp-ping.vultr.com/vultr.com.1000MB.bin')}}</option>
+                        <option value="https://nj-us-ping.vultr.com/vultr.com.1000MB.bin">Vultr 1G(纽约) {{getLatencyDisplay('https://nj-us-ping.vultr.com/vultr.com.1000MB.bin')}}</option>
+                        <option value="https://speedtest.tokyo2.linode.com/100MB-tokyo2.bin">Linode 100MB(日本省东京市) {{getLatencyDisplay('https://speedtest.tokyo2.linode.com/100MB-tokyo2.bin')}}</option>
                         <option value="">↓↓ 如需自定义请直接在下方填写资源链接 ↓↓</option>
                     </select>
                     <!-- 自定义下载链接输入框 -->
@@ -111,6 +176,11 @@
                 <label for="infinite-loop" class="ml-2 block text-sm text-gray-900">无限循环</label>
             </div>
 
+            <!-- 延迟测试按钮 -->
+            <button @click="testLatency" :disabled="latencyTesting" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 ease-in-out mb-3" :class="{ 'opacity-50 cursor-not-allowed': latencyTesting }">
+                {{latencyTesting?'测试中...':'测试延迟'}}
+            </button>
+
             <!-- 开始/停止按钮 -->
             <button @click="run" class="w-full bg-gray-700 text-white py-2 px-4 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-150 ease-in-out">
                 {{set.status?'停止':'开始'}}
@@ -131,6 +201,36 @@
                     <div class="text-xl font-bold">{{secToTime(spend)}}</div>
                 </div>
             </div>
+
+            <!-- 延迟测试结果 -->
+            <div v-if="latencyResults.length > 0" class="mt-6">
+                <h6 class="text-sm font-semibold text-gray-700 mb-3">延迟测试结果 (点击选择节点)</h6>
+                <div class="max-h-60 overflow-y-auto border border-gray-300 rounded-md">
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-3 py-2 text-left">节点</th>
+                                <th class="px-3 py-2 text-right">延迟</th>
+                                <th class="px-3 py-2 text-center">状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="result in sortedLatencyResults" :key="result.name" 
+                                @click="selectNode(result)"
+                                class="border-t border-gray-200 hover:bg-gray-50 cursor-pointer">
+                                <td class="px-3 py-2">{{result.name}}</td>
+                                <td class="px-3 py-2 text-right">
+                                    <span :class="getLatencyClass(result.latency)">{{result.latency}}ms</span>
+                                </td>
+                                <td class="px-3 py-2 text-center">
+                                    <span v-if="result.success" class="text-green-500">✓</span>
+                                    <span v-else class="text-red-500">✗</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </main>
 
         <!-- 工具说明区域，简化内容 -->
@@ -138,8 +238,11 @@
             <h6 class="text-lg font-semibold mb-3">工具说明</h6>
             <p class="text-sm text-gray-700 mb-2">多线程消耗流量，Web版流量工具。</p>
             <p class="text-sm text-gray-700 mb-2">此工具可用于测试网络连接稳定性。</p>
+            <p class="text-sm text-gray-700 mb-2">点击"测试延迟"按钮可自动测试所有节点的延迟，帮助选择最佳节点。</p>
+            <p class="text-sm text-gray-700 mb-2">测试结果按延迟从低到高排序，点击表格行即可选择该节点。</p>
+            <p class="text-sm text-gray-700 mb-2">延迟颜色说明：绿色(&lt;100ms)、黄色(&lt;300ms)、红色(&gt;=300ms)</p>
             <p class="text-sm text-gray-700 mb-2">注意：仅支持同源链接请求。</p>
-            <p class="text-sm text-gray-700 mb-2">最近更新: 20220822</p>
+            <p class="text-sm text-gray-700 mb-2">最近更新: 20240101</p>
         </div>
     </div>
 
@@ -167,7 +270,30 @@
                 spend: 0, // 运行时长
                 waste: 0, // 已消耗流量
                 timer: null, // 定时器句柄
-                cancelSource: axios.CancelToken.source() // 用于取消 Axios 请求
+                cancelSource: axios.CancelToken.source(), // 用于取消 Axios 请求
+                latencyTesting: false, // 延迟测试状态
+                latencyTested: false, // 是否已进行延迟测试
+                latencyResults: [], // 延迟测试结果
+                // 延迟测试节点列表
+                latencyNodes: [
+                    { name: 'HK-100MB', url: 'https://84.17.57.129/100MB' },
+                    { name: 'SG-100MB', url: 'https://89.187.162.1/100MB' },
+                    { name: 'Tokyo-100MB', url: 'https://89.187.160.1/100MB' },
+                    { name: 'Seoul-100MB', url: 'https://89.222.116.1/100MB' },
+                    { name: 'KL-100MB', url: 'https://89.222.110.1/100MB' },
+                    { name: 'Sydney-100MB', url: 'https://143.244.63.144/100MB' },
+                    { name: 'Melbourne-100MB', url: 'https://79.127.130.1/100MB' },
+                    { name: 'Auckland-100MB', url: 'https://79.127.173.1/100MB' },
+                    { name: 'SIN-100MB', url: 'https://sin-speed.hetzner.com/100MB.bin' },
+                    { name: 'ASH-100MB', url: 'https://ash-speed.hetzner.com/100MB.bin' },
+                    { name: 'FSN1-100MB', url: 'https://fsn1-speed.hetzner.com/100MB.bin' },
+                    { name: 'HEL1-100MB', url: 'https://hel1-speed.hetzner.com/100MB.bin' },
+                    { name: 'NBG1-100MB', url: 'https://nbg1-speed.hetzner.com/100MB.bin' },
+                    { name: 'Cachefly', url: 'https://cachefly.cachefly.net/100mb.test' },
+                    { name: 'Vultr-SG', url: 'https://sgp-ping.vultr.com/vultr.com.1000MB.bin' },
+                    { name: 'Vultr-NY', url: 'https://nj-us-ping.vultr.com/vultr.com.1000MB.bin' },
+                    { name: 'Linode-Tokyo', url: 'https://speedtest.tokyo2.linode.com/100MB-tokyo2.bin' },
+                ]
             },
             watch: {
                 // 监听状态变化，启动或停止下载任务
@@ -198,10 +324,97 @@
                     }
                 }
             },
+            computed: {
+                // 按延迟排序的结果
+                sortedLatencyResults() {
+                    return [...this.latencyResults].sort((a, b) => {
+                        if (a.success !== b.success) {
+                            return a.success ? -1 : 1;
+                        }
+                        return a.latency - b.latency;
+                    });
+                }
+            },
             methods: {
                 // 切换开始/停止状态
                 run() {
                     this.set.status = !this.set.status;
+                },
+                // 自动测试延迟（多线程并行测试）
+                async testLatency() {
+                    this.latencyTesting = true;
+                    this.latencyResults = [];
+                    
+                    // 并行测试所有节点
+                    const promises = this.latencyNodes.map(node => this.pingNode(node));
+                    this.latencyResults = await Promise.all(promises);
+                    
+                    this.latencyTesting = false;
+                    this.latencyTested = true; // 标记已测试
+                },
+                // 测试单个节点延迟
+                async pingNode(node) {
+                    const startTime = new Date().getTime();
+                    try {
+                        await axios.get(node.url, {
+                            timeout: 8000,
+                            headers: { 'Cache-Control': 'no-cache' },
+                            responseType: 'blob',
+                            maxContentLength: 1024 * 1024 // 只获取1MB数据
+                        });
+                        const latency = new Date().getTime() - startTime;
+                        return {
+                            name: node.name,
+                            url: node.url,
+                            latency: latency,
+                            success: true
+                        };
+                    } catch (error) {
+                        // 如果GET失败，尝试HEAD请求
+                        try {
+                            await axios.head(node.url, {
+                                timeout: 5000,
+                                headers: { 'Cache-Control': 'no-cache' }
+                            });
+                            const latency = new Date().getTime() - startTime;
+                            return {
+                                name: node.name,
+                                url: node.url,
+                                latency: latency,
+                                success: true
+                            };
+                        } catch (headError) {
+                            return {
+                                name: node.name,
+                                url: node.url,
+                                latency: -1,
+                                success: false
+                            };
+                        }
+                    }
+                },
+                // 选择节点
+                selectNode(result) {
+                    if (result.success) {
+                        this.set.input = result.url;
+                    }
+                },
+                // 获取延迟显示文本（用于select选项中）
+                getLatencyDisplay(url) {
+                    if (!this.latencyTested) return '';
+                    const result = this.latencyResults.find(r => r.url === url);
+                    if (!result) return '';
+                    if (!result.success) return '[✗ 不可达]';
+                    const color = result.latency < 100 ? 'green' : (result.latency < 300 ? 'yellow' : 'red');
+                    const prefix = result.latency < 100 ? '✓' : (result.latency < 300 ? '~' : '!');
+                    return `[${prefix} ${result.latency}ms]`;
+                },
+                // 获取延迟颜色样式
+                getLatencyClass(latency) {
+                    if (latency < 0) return 'text-gray-400';
+                    if (latency < 100) return 'text-green-600 font-semibold';
+                    if (latency < 300) return 'text-yellow-600';
+                    return 'text-red-600';
                 },
                 // 执行单个下载任务
                 download(id) {
